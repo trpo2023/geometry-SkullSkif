@@ -231,5 +231,7 @@ int main()
     lines_count = objectsCount(filename);
     circle* Objects = (circle*) malloc(lines_count * sizeof(circle));
     getObjects(data,lines_count, Objects);
+    for (int i=0;i<lines_count;i++)
+        printf("%s\n",Objects[i].string)
     return 0;
 }
