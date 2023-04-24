@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <math.h>
 #define maxvalue 100
 #define maxstr 255
 
@@ -232,6 +231,13 @@ int main()
     circle* Objects = (circle*) malloc(lines_count * sizeof(circle));
     getObjects(data,lines_count, Objects);
     for (int i=0;i<lines_count;i++)
-        printf("%s\n",Objects[i].string)
+        printf("%s\n",Objects[i].string);
+    for (int i=0;i<lines_count;i++)
+        {
+            free(Objects[i].intersects);
+            free(Objects[i].coord);
+            free(Objects);
+        }
+    fclose(data);
     return 0;
 }
