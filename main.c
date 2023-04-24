@@ -33,12 +33,28 @@ void checkFile(FILE* data)
     }
 }
 
+int objectsCount(char* filename) //  кол-во строк в файле
+{
+    FILE *data;
+    int count = 0;
+    data = fopen(filename,"r");
+    while (! feof(data))
+    {
+        if (fgetc(data) == '\n')
+            count++;
+    }
+    count++;
+    fclose(data);
+    return count;
+}
+
 int main()
 {
     char filename[maxvalue] = "input.txt";
     FILE *data;
     data = fopen(filename,"r");
     checkFile(data);
-
+    int lines_count = 0;
+    lines_count = objectsCount(filename);
     return 0;
 }
