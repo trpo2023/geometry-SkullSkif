@@ -1,2 +1,2 @@
 all:
-	gcc -Wall -Werror HelloWorld.c
+	gcc -Wall -Werror main.c
