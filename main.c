@@ -203,6 +203,24 @@ void checkError(char* strObject,int* pos, circle* Object, int strcount)
     checkPointRad(strObject,pos, Object,strcount);
 }
 
+void getObjects(FILE* data, int lines_count, circle* Objects)
+{
+    char strObject[maxstr] = "";
+    int pos = 0; 
+    int strcount = 0;
+    for (int i=0;i<lines_count;i++)
+    {    
+        fgets(strObject,maxstr,data); // считываю строку с файла    
+        Objects[i].coord = (point*)malloc(sizeof(point));
+        Objects[i].intersects = (int*)malloc(lines_count * sizeof(int));
+        pos = 0;
+        checkError(strObject,&pos, &Objects[i],strcount);
+        strcpy(Objects[i].string, strObject);
+        strcount++;
+    }
+
+}
+
 int main()
 {
     char filename[maxvalue] = "input.txt";
@@ -212,5 +230,6 @@ int main()
     int lines_count = 0;
     lines_count = objectsCount(filename);
     circle* Objects = (circle*) malloc(lines_count * sizeof(circle));
+    getObjects(data,lines_count, Objects);
     return 0;
 }
