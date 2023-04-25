@@ -14,3 +14,12 @@ CTEST(TEST_file, file_input)
     ASSERT_EQUAL(1,result);
     fclose(expected);
 }
+
+CTEST(TEST_file, is_file_empty)
+{
+    FILE* data = fopen("bin/input.txt","r");
+    ASSERT_NOT_EQUAL(EOF,fgetc(data));
+    fclose(data);
+
+
+}
