@@ -16,8 +16,9 @@ int main()
         {
             free(Objects[i].intersects);
             free(Objects[i].coord);
-            free(Objects);
+            
         }
+    free(Objects);    
     fclose(data);
     return 0;
 }

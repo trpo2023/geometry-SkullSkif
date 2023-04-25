@@ -1,27 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 #include <libgeometry/parser.h>
 
 #define maxvalue 100
 #define maxstr 255
 
-struct Point {
-    int x;
-    int y;
-};
-typedef struct Point point;
-
-struct Circle {
-    char string[maxstr];
-    double rad;
-    point* coord;
-    double perimeter;
-    double area;
-    int* intersects;
-};
-typedef struct Circle circle;
 
 void checkFile(FILE* data)
 {
@@ -40,7 +21,7 @@ int objectsCount(char* filename) //  кол-во строк в файле
         if (fgetc(data) == '\n')
             count++;
     }
-    count++;
+    count++; 
     fclose(data);
     return count;
 }
@@ -218,26 +199,4 @@ void getObjects(FILE* data, int lines_count, circle* Objects)
         strcpy(Objects[i].string, strObject);
         strcount++;
     }
-}
-
-int main()
-{
-    char filename[maxvalue] = "input.txt";
-    FILE* data;
-    data = fopen(filename, "r");
-    checkFile(data);
-    int lines_count = 0;
-    lines_count = objectsCount(filename);
-    circle* Objects = (circle*)malloc(lines_count * sizeof(circle));
-    getObjects(data, lines_count, Objects);
-    for (int i = 0; i < lines_count; i++)
-        printf("%s\n", Objects[i].string);
-    for (int i = 0; i < lines_count; i++) {
-    
-        free(Objects[i].intersects);
-        free(Objects[i].coord);
-    }
-    free(Objects);
-    fclose(data);
-    return 0;
 }
