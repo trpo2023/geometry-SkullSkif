@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <math.h>
 #define maxvalue 100
 #define maxstr 255
 
@@ -42,3 +43,7 @@ void checkPointRad(char* strObject,int* pos, circle* Object,int strcount);
 void checkError(char* strObject,int* pos, circle* Object, int strcount);
 
 void getObjects(FILE* data, int lines_count, circle* Objects);
+
+void getParametrs(circle* Objects,int lines_count);
+
+void writeOutput(circle* Objects,int lines_count);

@@ -200,3 +200,46 @@ void getObjects(FILE* data, int lines_count, circle* Objects)
         strcount++;
     }
 }
+
+void getParametrs(circle* Objects,int lines_count)
+{
+    double d = 0;
+    for (int i = 0;i<lines_count;i++)
+        {
+            for (int j = lines_count-1;j>i;j--)
+                {
+                    d = sqrt(pow(((Objects[j].coord->x)-(Objects[i].coord->x)),2)+pow(((Objects[j].coord->y)-(Objects[i].coord->y)),2)); 
+                    Objects[i].intersects[j] = 1;
+                    if (d>(Objects[i].rad+Objects[j].rad))
+                        Objects[i].intersects[j] = 0;
+                    if (d<abs(Objects[i].rad-Objects[j].rad))
+                        Objects[i].intersects[j] = 1;
+                    if (Objects[i].intersects[j] == 1)
+                        Objects[j].intersects[i] = 1;
+                }
+        }
+    for (int i = 0;i<lines_count;i++)
+        {
+            Objects[i].perimeter = 2 * 3.14 * Objects[i].rad;
+            Objects[i].area = 3.14 * pow(Objects[i].rad,2);
+        }
+}
+
+void writeOutput(circle* Objects,int lines_count)
+{
+    FILE* out;
+    out = fopen("bin/output.txt","w+t");
+    for (int i = 0;i<=lines_count-1;i++)
+        {
+            fprintf(out,"%d. %s",i+1,Objects[i].string);
+            if (i==lines_count-1)
+                fprintf(out,"\n");
+            fprintf(out,"\tperimeter = %.4f\n\tarea = %.4f\n\tintersects:\n",Objects[i].perimeter,Objects[i].area);
+                for (int j = 0;j<lines_count;j++)
+                    {
+                        if (Objects[i].intersects[j])
+                            fprintf(out,"\t\t%d. circle\n",j+1);
+                    }
+            fprintf(out,"\n");
+        }
+}
