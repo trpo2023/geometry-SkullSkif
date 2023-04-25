@@ -23,3 +23,30 @@ CTEST(TEST_file, is_file_empty)
 
 
 }
+
+CTEST(TEST_data, getstring)
+{
+    char filename[] = "bin/input.txt";
+    FILE *data;
+    data = fopen(filename,"r");    
+    int lines_count = 0;
+    lines_count = objectsCount(filename);
+    circle* Objects = (circle*) malloc(lines_count * sizeof(circle));
+    getObjects(data,lines_count, Objects);
+    getParametrs(Objects,lines_count);
+    writeOutput(Objects,lines_count);
+    char str[maxstr];
+    fseek(data,0,0);
+    for (int i = 0;i<lines_count;i++)
+        {
+            fgets(str,maxstr,data);
+            ASSERT_STR(str, Objects[i].string);
+        }
+    for (int i=0;i<lines_count;i++)
+        {
+            free(Objects[i].intersects);
+            free(Objects[i].coord);
+        }
+    free(Objects);    
+    fclose(data);
+}

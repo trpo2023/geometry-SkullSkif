@@ -1,49 +1,26 @@
-1. circle(111 33, 1.5)
-	perimeter = 9.4200
-	area = 7.0650
-	intersects:
-
-2. circle(20 10, 7.0)
-	perimeter = 43.9600
-	area = 153.8600
+1. circle(133 123, 50.0)
+	perimeter = 314.0000
+	area = 7850.0000
 	intersects:
 		3. circle
-		5. circle
+		4. circle
 
-3. circle(10 50, 100.0)
-	perimeter = 628.0000
-	area = 31400.0000
-	intersects:
-		2. circle
-		5. circle
-		6. circle
-		7. circle
-
-4. circle(220 110, 5.0)
-	perimeter = 31.4000
-	area = 78.5000
+2. circle(632 33, 1.1)
+	perimeter = 6.9080
+	area = 3.7994
 	intersects:
 
-5. circle(0 0, 90.0)
-	perimeter = 565.2000
-	area = 25434.0000
+3. circle(133 115, 10.0)
+	perimeter = 62.8000
+	area = 314.0000
 	intersects:
-		2. circle
+		1. circle
+		4. circle
+
+4. circle(131 111, 3.5)
+	perimeter = 21.9800
+	area = 38.4650
+	intersects:
+		1. circle
 		3. circle
-		6. circle
-		7. circle
-
-6. circle(0 0, 1.5)
-	perimeter = 9.4200
-	area = 7.0650
-	intersects:
-		3. circle
-		5. circle
-
-7. circle(60 65, 4.0)
-	perimeter = 25.1200
-	area = 50.2400
-	intersects:
-		3. circle
-		5. circle
 
