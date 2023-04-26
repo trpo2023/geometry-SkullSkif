@@ -139,3 +139,63 @@ CTEST(TEST_data, is_name_correct)
     }
     ASSERT_STR(strTemp,strName);}
 }
+CTEST(TEST_data, is_circle_lower)
+{
+    char unexpected[maxstr] = "CirClE";
+    char expected[maxstr] = "circle";
+    char strName[maxstr];
+    int i = 0;
+    while (((unexpected[i] >= 'a') && (unexpected[i] <= 'z')) ||
+        ((unexpected[i] >= 'A') && (unexpected[i] <= 'Z'))) 
+            {
+                strName[i] = tolower(unexpected[i]);
+                i++;
+            }
+   ASSERT_STR(expected,strName);
+}
+
+CTEST(TEST_data, is_number_in_y_correct)
+{
+    int i = 0;
+    int j = 0;
+    int y = 0;
+    char expected[maxstr] = " 0, 4.0)";
+    char number[maxstr] = {
+            'a',
+    };
+    while (expected[i] == ' ')
+        i = i + 1;
+    if (!isdigit(expected[i])) {
+        exit(1);
+    }
+    while (isdigit(expected[i])) {
+        number[j] = expected[i];
+        j++;
+        i = i + 1;
+    }
+    y = atoi(number);
+    if (number[0] == 'a') {
+        exit(1);
+    }
+ASSERT_EQUAL(0,y);
+}
+
+CTEST(TEST_data, is_number_in_x_correct)
+{
+    int i = 0;
+    int j = 0;
+    int x = 0;
+    int expectedint = 4;
+    char expected[maxstr] = "4 0, 4.0)";
+    char number[maxstr] = {
+            'a',
+    };
+        while (isdigit(expected[i])) {
+        number[j] = expected[i];
+        j++;
+        i = i + 1;
+    }
+    x = 5;
+    x = atoi(number);
+    ASSERT_EQUAL(expectedint,x);
+}
