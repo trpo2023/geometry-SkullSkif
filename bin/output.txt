@@ -24,10 +24,3 @@
 		1. circle
 		3. circle
 
-= 38.4650
-	intersects:
-		1. circle
-		2. circle
-		3. circle
-		4. circle
-
