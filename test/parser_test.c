@@ -50,3 +50,61 @@ CTEST(TEST_data, getstring)
     free(Objects);    
     fclose(data);
 }
+
+CTEST(TEST_data, is_perimetr_positiv)
+{
+    char filename[] = "bin/input.txt";
+    FILE *data;
+    data = fopen(filename,"r");    
+    int lines_count = 0;int expected;
+    lines_count = objectsCount(filename);
+    circle* Objects = (circle*) malloc(lines_count * sizeof(circle));
+    getObjects(data,lines_count, Objects);
+    getParametrs(Objects,lines_count);
+    for (int i = 0;i<lines_count;i++)
+        {
+            if (Objects[i].perimeter >= 0)
+                expected = 1;
+            else expected = 0;
+            ASSERT_EQUAL(1, expected);
+        }    
+    writeOutput(Objects,lines_count);
+    
+
+    for (int i=0;i<lines_count;i++)
+        {
+            free(Objects[i].intersects);
+            free(Objects[i].coord);
+        }
+    free(Objects);    
+    fclose(data);    
+}
+
+CTEST(TEST_data, is_area_positiv)
+{
+    char filename[] = "bin/input.txt";
+    FILE *data;
+    data = fopen(filename,"r");    
+    int lines_count = 0;int expected;
+    lines_count = objectsCount(filename);
+    circle* Objects = (circle*) malloc(lines_count * sizeof(circle));
+    getObjects(data,lines_count, Objects);
+    getParametrs(Objects,lines_count);
+    for (int i = 0;i<lines_count;i++)
+        {
+            if (Objects[i].area >= 0)
+                expected = 1;
+            else expected = 0;
+            ASSERT_EQUAL(1, expected);
+        }    
+    writeOutput(Objects,lines_count);
+    
+
+    for (int i=0;i<lines_count;i++)
+        {
+            free(Objects[i].intersects);
+            free(Objects[i].coord);
+        }
+    free(Objects);    
+    fclose(data);    
+}
