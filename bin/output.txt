@@ -1,0 +1,26 @@
+1. circle(133 123, 50.0)
+	perimeter = 314.0000
+	area = 7850.0000
+	intersects:
+		3. circle
+		4. circle
+
+2. circle(632 33, 1.1)
+	perimeter = 6.9080
+	area = 3.7994
+	intersects:
+
+3. circle(133 115, 10.0)
+	perimeter = 62.8000
+	area = 314.0000
+	intersects:
+		1. circle
+		4. circle
+
+4. circle(131 111, 3.5)
+	perimeter = 21.9800
+	area = 38.4650
+	intersects:
+		1. circle
+		3. circle
+
