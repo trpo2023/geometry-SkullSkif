@@ -3,3 +3,5 @@ a.out
 a.out
 main
 bin/output.txt
+obj/src/geometry/*
+obj/src/libgeometry/*
